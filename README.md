@@ -1,10 +1,9 @@
 # python-base
 
-A personal notebook of Python concepts. Each folder is one topic with small, runnable
-examples. This is not a library or an application — the point is to make the pattern
-readable in one file.
+A personal notebook of Python concepts. Each topic is a small, runnable example —
+not a library and not an application. The point is to make the idea readable in one file.
 
-Requires **Python 3.14+**. Examples are run with [uv](https://docs.astral.sh/uv/).
+Requires **Python 3.14+**. Run examples with [uv](https://docs.astral.sh/uv/).
 
 ## Setup
 
@@ -17,17 +16,28 @@ uv sync
 ```bash
 uv run python deco/deco__OOP.py
 uv run python deco/deco__parameterized.py
+uv run python OOP_cls_vs_staticmethod.py
 ```
 
 ## Topics
 
-| Folder | File | Concept |
-| --- | --- | --- |
-| `deco/` | `deco__OOP.py` | GoF Decorator pattern via classes: `Component` / `Decorator` wrap a `PrimeCounter` with logging and timing, and the wrappers stack |
-| `deco/` | `deco__parameterized.py` | Function decorators: a plain `log_action` decorator and a parameterized `repeat(num_times=...)` factory, both using `functools.wraps` |
+| Path | Concept |
+| --- | --- |
+| `deco/deco__OOP.py` | GoF Decorator pattern via classes: `Component` / `Decorator` wrap a `PrimeCounter` with logging and timing; wrappers stack |
+| `deco/deco__parameterized.py` | Function decorators: a plain `log_action` wrapper and a parameterized `repeat(num_times=...)` factory, both using `functools.wraps` |
+| `OOP_cls_vs_staticmethod.py` | `@staticmethod` vs `@classmethod`: helpers that do not need `self`, vs factory methods that receive `cls` |
 
-Each file has a short module docstring, type hints on public functions, and a
-`main()` (or a `__main__` block) so it can be executed on its own.
+## Layout
+
+One directory per idea when the topic has more than one file. When the same idea is shown more than one way:
+
+- `topic__OOP.py` — classes / GoF-style
+- `topic__fn.py` — functions, closures, or `functools`
+- `topic.py` — a single canonical example
+
+A lone file at the repo root is fine until a second variant appears; then it should move into its own folder.
+
+Each example has a short module docstring (or comments that name the idea) and can be executed on its own.
 
 ## Tooling
 
