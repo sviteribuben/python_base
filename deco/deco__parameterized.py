@@ -14,12 +14,14 @@ logger = logging.getLogger(__name__)
 
 def log_action(func: Callable[..., Any]) -> Callable[..., Any]:
     """Simple decorator for logging the function call"""
+
     @wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         logger.info(f"--- Start function {func.__name__} ---")
         result = func(*args, **kwargs)
         logger.info(f"--- End function {func.__name__}. Result: {result} ---")
         return result
+
     return wrapper
 
 
